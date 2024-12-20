@@ -10,10 +10,19 @@ cors = CORS(app)
 def get_publishers():
     publishers = [
         {'出版社番号': 1, '出版社名': '新曜社'},
-        {'出版社番号': 2, '出版社名': 'マイナビ出版'},
+        {'出版社番c号': 2, '出版社名': 'マイナビ出版'},
         {'出版社番号': 3, '出版社名': 'オライリージャパン'},
         {'出版社番号': 4, '出版社名': '筑摩書房'},
     ]
+    connection = psycopg.connect(
+    host='localhost',
+    dbname='students',
+    user='postgres',
+    password='password',
+    )
+    result = connection.execute(sql)
+    for row in result:
+    print(row)
     return jsonify(publishers)
 
 
